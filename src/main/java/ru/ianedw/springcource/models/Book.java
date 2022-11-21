@@ -1,35 +1,39 @@
 package ru.ianedw.springcource.models;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 public class Book {
-    private int bookId;
+    private int id;
 
-    @NotEmpty(message = "Title should not be empty")
+    @NotEmpty(message = "Should not be empty")
     @Size(min = 2, max = 100, message = "Title should be between 2 and 100")
     private String title;
 
     @NotEmpty(message = "Author should not be empty")
-    @Size(min = 2, max = 100, message = "Author should be between 2 and 100")
+    @Size(min = 2, max = 100, message = "Author name should be between 2 and 100")
     private String author;
 
+    @Min(value = 1500, message = "Year should be more than 1500")
     private int year;
 
-    public Book() {}
-    public Book(int bookId, String title, String author, int year) {
-        this.bookId = bookId;
+    public Book() {
+
+    }
+
+    public Book(String title, String author, int year) {
         this.title = title;
         this.author = author;
         this.year = year;
     }
 
-    public int getBookId() {
-        return bookId;
+    public int getId() {
+        return id;
     }
 
-    public void setBookId(int id) {
-        this.bookId = id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
